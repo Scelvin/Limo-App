@@ -247,13 +247,22 @@
 
                                 <h5 class="fw-bold">CHOOSE EXTRAS</h5>
                                 <table class="table table-hover table-bordered">
+                                    @php
+                                        $count = 1;
+                                    @endphp
                                     @foreach ($extras as $extra)
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="extras[]" id="extras"
+                                                    {{-- <input type="checkbox" name="extras[]"
+                                                        id={{ 'extras_' . $count++ }} 
                                                         value="{{ $extra->price }}"
-                                                        onclick="setExtraAmount({{ $extra->price }})">
+                                                        onclick="setExtraAmount(id,{{ $extra->price }})">
+                                                    <label for="extras">{{ $extra->name }}</label> --}}
+
+                                                    <input class="ext" type="checkbox" name="extras[]"
+                                                        id="{{ $extra->price }}" value="{{ $extra->id }}"
+                                                        onclick="setExtraAmount(this.id)">
                                                     <label for="extras">{{ $extra->name }}</label>
                                                 </td>
                                                 <td>{{ $extra->price }}</td>
@@ -315,13 +324,11 @@
         // $('#extras').change(function check() {
 
         //     $('#extras').each(function(idx, el) {
-
         //         if ($(el).is(':checked')) {
         //             var selectedValue = $(el).val();
         //             console.log(selectedValue);
         //         }
         //     });
-
         // });
 
         // $('#extras').click(function() {
@@ -329,10 +336,48 @@
         //         // Do stuff
         //     }
         // });
+        // var amount = 0;
 
-        function setExtraAmount(amount) {
-            $("#extrasamt").html(amount);
-            console.log(amount);
-            // $("#extras").html(response.extras);
+        // function setExtraAmount(id, prod_amount) {
+        //     console.log(prod_amount);
+        //     console.log(id);
+        //     if ($("#" + id).is(':checked')) {
+        //         amount += prod_amount;
+        //     } else {
+        //         amount -= prod_amount;
+        //     }
+        //     $("#extrasamt").html(amount);
+        //     console.log(amount);
+        // $("#extras").html(response.extras);
+        //   }
+
+        var amount = 0;
+
+        function setExtraAmount(amount, prod_amount) {
+
+            var id = $(this).attr('id');
+            console.log(id);
+            // if ($(amount).is(':checked')) {
+            //     amount += prod_amount;
+            // } else {
+            //     amount -= prod_amount;
+            // }
+            // console.log(amount);
+            // $("#extrasamt").html(amount);
         }
+
+        // var sum = 0;
+        // $('.ext').click(function() {
+        //     console.log("hello");
+        //     sum = 0;
+        //     $('.ext ').each(function(idx, elm) {
+        //         sum += parseInt(elm.id, 10);
+        //     });
+        //     $('#extrasamt').html(sum);
+
+        // });
+
+        //});
+
+        //});
     </script>

@@ -78,10 +78,10 @@
 
     // });
 
-    function setExtraAmount(amount) {
-        console.log('hi');
-        $("#extras").html(response.extras.price);
-    }
+    // function setExtraAmount(amount) {
+    //     console.log('hi');
+    //     $("#extras").html(response.extras.price);
+    // }
 
     function setServiceId(service) {
         // console.log(service.value);
